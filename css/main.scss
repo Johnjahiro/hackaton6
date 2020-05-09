@@ -1,0 +1,449 @@
+/* VARIABLES */
+
+$font-family: Arial, Helvetica, sans-serif;
+$tipoArticleColor: #356ead;
+$titleArticleColor: #1f3f68;
+$articleColor: rgba(0, 0, 0, 0.6);
+$autorColor: #1f3f68;
+$dateColor: rgba(0, 0, 0, 0.4);
+$footerColor: #316099;
+
+/* GLOBALS */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+}
+
+.container {
+  width: 1366px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.04em;
+  color: #356ead;
+  opacity: 0.8;
+}
+
+@mixin h3Foros {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  color: $titleArticleColor;
+  margin: 15px 0;
+  text-align: center;
+}
+
+@mixin h4Foros {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  color: $titleArticleColor;
+  margin-bottom: 10px;
+}
+
+@mixin h5Footer {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 0.05em;
+  margin-bottom: 60px;
+}
+
+@mixin pForos {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: justify;
+  letter-spacing: 0.04em;
+  color: $articleColor;
+  margin-bottom: 30px;
+}
+
+@mixin pFooter {
+  font-family: Arial;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+
+/* or 162% */
+letter-spacing: 0.05em;
+
+/* white */
+color: #FFFFFF;
+opacity: 0.6;
+}
+
+@mixin aFooter {
+  text-decoration: none;
+  display: block;
+  width: 220px;
+  line-height: 56px;
+  text-align: center;
+  background: #5a98d0;
+  border-radius: 10px;
+  color: #fff;
+}
+
+@mixin nameAutor {
+  color: #1f3f68;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+}
+
+@mixin dateAutor {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  color: #1f3f68;
+  opacity: 0.4;
+}
+
+@mixin icons {
+  width: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  height: 130px;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    margin-left: 85px;
+  }
+
+  &__nav {
+    width: 60%;
+
+    & ul {
+      display: flex;
+      font-weight: bold;
+      list-style-type: none;
+      justify-content: space-evenly;
+    }
+  }
+}
+
+.banner {
+  width: 100%;
+  &__logo {
+    position: relative;
+
+    & h1 {
+      position: absolute;
+      color: #fff;
+      font-size: 45px;
+      letter-spacing: 0.04em;
+      left: 531px;
+      top: 50px;
+    }
+
+    &__info {
+      position: absolute;
+      color: #fff;
+      left: 293px;
+      top: 140px;
+
+      & span {
+        font-size: 20px;
+        font-weight: normal;
+        letter-spacing: 0.04em;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.78);
+      }
+    }
+  }
+}
+
+.content {
+  width: 70%;
+  margin: 0 auto;
+  &__main {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    &__search {
+      width: 100%;
+      position: relative;
+      margin-bottom: 30px;
+      margin-top: 55px;
+
+      & figure {
+        position: absolute;
+        top: 19px;
+        left: 27px;
+      }
+
+      & input {
+        width: 100%;
+        padding: 20px 75px;
+        background-color: #f1f1f1;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+      }
+    }
+
+    &__foro1 {
+      display: flex;
+      margin-top: 15px;
+      margin-bottom: 30px;
+
+      & h3 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 46px;
+        letter-spacing: 0.04em;
+        color: #1f3f68;
+        margin-bottom: 10px;
+      }
+
+      & p {
+        text-align: justify;
+        margin-bottom: 25px;
+        line-height: 26px;
+      }
+
+      & .foro__contenido__datos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .datos__autor {
+          display: flex;
+          flex-direction: column;
+
+          .name {
+            @include nameAutor();
+          }
+
+          .date {
+            @include dateAutor();
+          }
+        }
+
+        & .icons {
+          @include icons();
+        }
+      }
+    }
+
+    &__more {
+      display: flex;
+      justify-content: space-between;
+
+      &__foro2,
+      &__foro3,
+      &__foro4 {
+        & h3 {
+          @include h3Foros();
+        }
+        & p {
+          @include pForos();
+        }
+
+        & .foro2__contenido__datos,
+        & .foro3__contenido__datos,
+        & .foro4__contenido__datos {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          & .datos__autor {
+            display: flex;
+            flex-direction: column;
+
+            .name {
+              @include nameAutor();
+            }
+
+            .date {
+              @include dateAutor();
+            }
+          }
+          .icons {
+            @include icons();
+          }
+        }
+      }
+    }
+    &__popular {
+      text-align: right;
+      display: block;
+      padding: 55px 0 26px 0;
+      & a {
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #356ead;
+        opacity: 0.8;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__article2 {
+    padding-top: 60px;
+    padding-bottom: 85px;
+
+    & h2 {
+      margin-bottom: 40px;
+    }
+
+    &__foro5,
+    &__foro6,
+    &__foro7,
+    &__foro8,
+    &__foro9 {
+      display: flex;
+
+      & .foro5__contenido,
+      & .foro6__contenido,
+      & .foro7__contenido,
+      & .foro8__contenido,
+      & .foro9__contenido {
+        margin-bottom: 35px;
+        padding-left: 20px;
+      }
+
+      h4 {
+        @include h4Foros();
+      }
+
+      p {
+        @include pForos();
+      }
+
+      & .foro5__contenido__datos,
+      & .foro6__contenido__datos,
+      & .foro7__contenido__datos,
+      & .foro8__contenido__datos,
+      & .foro9__contenido__datos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      & .datos__autor {
+        display: flex;
+        flex-direction: column;
+        .name {
+          @include nameAutor();
+        }
+
+        .date {
+          @include dateAutor();
+        }
+      }
+
+      .icons {
+        @include icons();
+      }
+    }
+
+    &__slide {
+      display: flex;
+      justify-content: space-between;
+      & a {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0.04em;
+        color: #356ead;
+        text-decoration: none;
+
+        img {
+          margin: 0 20px;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  width: 95%;
+  background: $footerColor;
+  border-radius: 0px 200px 0px 0px;
+
+  &__primary {
+    width: 90%;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid rgb(202, 202, 202);
+
+    & .about {
+      width: 480px;
+      color: #fff;
+
+      & h5 {
+        @include h5Footer();
+      }
+
+      & p {
+        @include pFooter();
+      }
+    }
+    
+    & a {
+      @include aFooter();
+    }
+  }
+
+  &__secondary {
+    width: 90%;
+  height: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+
+  & > div{
+    width: 200px;
+  }
+
+&__info1 {
+
+}
+
+  }
+}
